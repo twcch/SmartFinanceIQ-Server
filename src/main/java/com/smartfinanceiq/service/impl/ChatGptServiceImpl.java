@@ -65,9 +65,9 @@ public class ChatGptServiceImpl implements ChatGptService {
              BufferedReader br = new BufferedReader(fr);) {
 
             sb = new StringBuilder();
-            int value;
-            while ((value = br.read()) != -1) {
-                sb.append((char) value);
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
             }
 
         } catch (FileNotFoundException e) {
