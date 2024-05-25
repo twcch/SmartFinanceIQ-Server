@@ -2,10 +2,7 @@ package com.smartfinanceiq.service.impl;
 
 import com.smartfinanceiq.service.ChatGptService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -38,7 +35,8 @@ public class ChatGptServiceImpl implements ChatGptService {
 
         // header 參數
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Content-Type", "application/json");
+        // httpHeaders.set("Content-Type", "application/json");
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.set("Authorization", "Bearer " + chatgpt_api_key);
 
         String httpBody = "{\"model\": \"" + chatgpt_api_model + "\", \"messages\": [{\"role\": \"user\", \"content\": \"" + content + "\"}]}";
